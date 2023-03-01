@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:41 by adantas-          #+#    #+#             */
-/*   Updated: 2023/02/28 17:46:33 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/01 17:47:42 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
+# include "libft/includes/libft.h"
 
 #endif
