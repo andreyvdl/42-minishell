@@ -6,21 +6,57 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:39 by adantas-          #+#    #+#             */
-/*   Updated: 2023/03/02 13:58:25 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/03 17:56:29 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	main(void)
+int	main(int ac, char **av, char **ep)
 {
 	char	*command;
 	size_t	i;
 	char	*user;
-	// int		oquotes;
 
 	command = 0x0;
 	i = 0;
+	(void)ep;
+	if (ac > 2)
+	{
+		printf("too many arguments\n");
+		exit(22);
+	}
+	if (ac == 2)
+	{
+		if (!av[1] || !av[1][0])
+		{
+			printf("invalid argument\n");
+			exit(22);
+		}
+		else if (!ft_strcmp(av[1], "-h") || !ft_strcmp(av[1], "--help"))
+		{
+			printf("This program is a minishell, it can use almost all shell/bash commands, but here are some extras:\n");
+			printf("-h --help\n\tDisplay this text.\n");
+			printf("-f --fast\n\tDisables the initial ASCII.\n");
+			printf("-v --version\n\tDisplay the program version.\n");
+			exit(0);
+		}
+		else if (!ft_strcmp(av[1], "-f") || !ft_strcmp(av[1], "--fast"))
+		{
+			readline("\e[1;36m🐚Type your command\e[0m$>");
+			exit(0);
+		}
+		else if (!ft_strcmp(av[1], "-v") || !ft_strcmp(av[1], "--version"))
+		{
+			printf("minishell\tversion:0.1\n");
+			exit(0);
+		}
+		else
+		{
+			printf("invalid argument\n");
+			exit(22);
+		}
+	}
 	user = getenv("USER");
 	printf("\e[1mHello %s, welcome to\n", user);
 	printf("___  ________ _   _ _____ _____ _   _ _____ _     _\n");
@@ -33,12 +69,8 @@ int	main(void)
 	while (1)
 	{
 		command = readline("\e[1;36m🐚Type your command\e[0m$>");
-		// while (command[i])
-		// {
-		// 	if
-		// }
 		if (command)
-			if (strcmp(command, "exit") == 0)
+			if (ft_strcmp(command, "exit") == 0)
 				break ;
 		add_history(command);
 		printf("Trying to execute [%s]\n", command);
