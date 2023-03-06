@@ -6,11 +6,23 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:39 by adantas-          #+#    #+#             */
-/*   Updated: 2023/03/03 17:56:29 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/06 16:38:44 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	print_logo(char *username)
+{
+	printf("\e[1mHello %s, welcome to\n", username);
+	printf("___  ________ _   _ _____ _____ _   _ _____ _     _\n");
+	printf("|  \\/  |_   _| \\ | |_   _/  ___| | | |  ___| |   | |\n");
+	printf("| .  . | | | |  \\| | | | \\ `--.| |_| | |__ | |   | |\n");
+	printf("| |\\/| | | | | . ` | | |  `--. \\  _  |  __|| |   | |\n");
+	printf("| |  | |_| |_| |\\  |_| |_/\\__/ / | | | |___| |___| |____\n");
+	printf("\\_|  |_/\\___/\\_| \\_/\\___/\\____/\\_| |_|____/\\_____|_____/");
+	printf("\e[0m\n");
+}
 
 int	main(int ac, char **av, char **ep)
 {
@@ -58,14 +70,7 @@ int	main(int ac, char **av, char **ep)
 		}
 	}
 	user = getenv("USER");
-	printf("\e[1mHello %s, welcome to\n", user);
-	printf("___  ________ _   _ _____ _____ _   _ _____ _     _\n");
-	printf("|  \\/  |_   _| \\ | |_   _/  ___| | | |  ___| |   | |\n");
-	printf("| .  . | | | |  \\| | | | \\ `--.| |_| | |__ | |   | |\n");
-	printf("| |\\/| | | | | . ` | | |  `--. \\  _  |  __|| |   | |\n");
-	printf("| |  | |_| |_| |\\  |_| |_/\\__/ / | | | |___| |___| |____\n");
-	printf("\\_|  |_/\\___/\\_| \\_/\\___/\\____/\\_| |_|____/\\_____|_____/");
-	printf("\e[0m\n");
+	print_logo(user);
 	while (1)
 	{
 		command = readline("\e[1;36m🐚Type your command\e[0m$>");
