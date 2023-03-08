@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:39 by adantas-          #+#    #+#             */
-/*   Updated: 2023/03/08 16:26:45 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:08:37 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,8 @@ void	loop_prompt(void)
 int	main(int ac, char **av, char **ep)
 {
 	char	*user;
+	t_all	all;
 
-	(void)ep;
 	if (ac > 2)
 	{
 		printf("too many arguments\n");
@@ -114,6 +114,8 @@ int	main(int ac, char **av, char **ep)
 	}
 	if (ac == 2)
 		check_arg(av);
+	all = (t_all){0};
+	clone_env(&all.env, ep);
 	user = getenv("USER");
 	print_logo(user);
 	ft_free(user);

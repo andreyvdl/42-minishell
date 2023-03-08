@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:41 by adantas-          #+#    #+#             */
-/*   Updated: 2023/03/01 17:47:42 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/08 17:02:52 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,35 @@
 ** tgetent, tgetflag, tgetnum, tgetstr, tgoto, tputs = curses.h term.h
 */
 
-# include <stdio.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <sys/time.h>
-# include <sys/resource.h>
-# include <dirent.h>
-# include <string.h>
-# include <sys/ioctl.h>
-# include <termios.h>
-# include <curses.h>
 # include <term.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include <curses.h>
+# include <dirent.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
+# include <termios.h>
+# include <sys/stat.h>
+# include <sys/time.h>
+# include <sys/wait.h>
+# include <sys/ioctl.h>
+# include <sys/types.h>
+# include <sys/resource.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 # include "libft/includes/libft.h"
+
+typedef struct s_env
+{
+	char			*key;
+	char			*value;
+	struct s_env	*next;
+}	t_env;
+
+typedef struct s_all
+{
+	t_env	env;
+}	t_all;
 
 #endif

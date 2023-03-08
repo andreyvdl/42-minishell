@@ -4,7 +4,7 @@ CFLAGS =-Wall -Wextra -Werror
 PROGLIB =-lreadline
 
 # FILES==================================
-SRC =minishell.c builtin_echo.c
+SRC =minishell.c
 OBJ =$(SRC:%.c=%.o)
 
 # COLORS=================================
