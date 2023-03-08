@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 14:21:39 by adantas-          #+#    #+#             */
-/*   Updated: 2023/03/07 15:33:12 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/03/08 16:26:45 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,19 @@ void	check_arg(char **av)
 void	verify_input(char *cmd)
 {
 	if (!ft_strncmp(cmd, "cd", 2))
-		exec_cd(cmd);
+		exec_cd(&cmd[2]);
 	else if (!ft_strncmp(cmd, "echo", 4))
-		exec_echo(cmd);
+		exec_echo(&cmd[4]);
 	else if (!ft_strncmp(cmd, "unset", 5))
-		exec_unset(cmd);
+		exec_unset(&cmd[5]);
 	else if (!ft_strncmp(cmd, "export", 6))
-		exec_export(cmd);
+		exec_export(&cmd[6]);
 	else if (!ft_strcmp(cmd, "pwd"))
-		exec_pwd(cmd);
+		exec_pwd(&cmd[3]);
 	else if (!ft_strcmp(cmd, "env"))
-		exec_env(cmd);
+		exec_env(&cmd[3]);
 	else if (!ft_strcmp(cmd, "exit"))
-		exec_exit(cmd);
+		exec_exit(&cmd[4]);
 	else
 		is_valid_cmd(cmd);
 	ft_free(cmd);
@@ -116,6 +116,7 @@ int	main(int ac, char **av, char **ep)
 		check_arg(av);
 	user = getenv("USER");
 	print_logo(user);
+	ft_free(user);
 	loop_prompt();
 	exit(0);
 }
